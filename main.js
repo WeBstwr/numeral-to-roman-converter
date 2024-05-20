@@ -1,5 +1,7 @@
+
+
 function intToRoman(num) {
-  const symbolsList = [
+  const symbolsList= [
       ["I", 1],
       ["IV", 4],
       ["V", 5],
@@ -40,9 +42,21 @@ function intToRoman(num) {
   }
   return roman;
 }
-
-// https://www.calculateme.com/roman-numerals/to-roman/
-// const number = document.getElementById("user-input--input");
-// const error = document.getElementById("error");
-// const convertButton = document.getElementById("convert-button");
-
+document.getElementById('convert-button').addEventListener('click', () => {
+    const numberInput = document.getElementById('number');
+    const errorElement = document.getElementById('error');
+    const outputElement = document.getElementById('output');
+    const number = parseInt(numberInput.value);
+  
+    errorElement.textContent = '';
+    outputElement.textContent = '';
+  
+    if (isNaN(number) || number < 1 || number > 4000000) {
+      errorElement.textContent = 'Please enter a number between 1 and 4000000';
+    } else {
+      const romanNumeral = intToRoman(number);
+      outputElement.textContent = `Roman numeral: ${romanNumeral}`;
+    }
+    
+    
+  });
